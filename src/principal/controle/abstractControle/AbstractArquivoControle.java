@@ -3,10 +3,9 @@ package principal.controle.abstractControle;
 import principal.enums.ConfiguracaoEnum;
 import principal.excecoes.PalavraNaoEncontradaException;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,10 +14,14 @@ import java.util.stream.Collectors;
 
 public abstract class AbstractArquivoControle extends AbstractControle {
 
-    private static final String CAMINHO_ARQUIVO_PALAVRAS = "src/recursos/palavras.txt";
+    private static final String CAMINHO_ARQUIVO_PALAVRAS;
     private static final Pattern REGEX_FACIL = Pattern.compile("\\b[a-zA-Z]{1,4}\\b");
     private static final Pattern REGEX_MEDIO = Pattern.compile("\\b[a-zA-Z]{11,}\\b");
     private static final Pattern REGEX_DIFICIL = Pattern.compile("\\b\\p{L}{11,}\\b");
+
+    static {
+        CAMINHO_ARQUIVO_PALAVRAS = Files.isReadable(Paths.get("recursos/palavras.txt")) ? "recursos/palavras.txt" : "src/recursos/palavras.txt";
+    }
 
     protected static String buscarPalavra() throws PalavraNaoEncontradaException {
         return buscarPalavra(lerArquivo());
