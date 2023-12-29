@@ -11,8 +11,6 @@ import java.util.prefs.Preferences;
 
 public abstract class AbstractControle {
     
-    private static final Integer WIDTH_PADRAO_TELA = 800;
-    private static final Integer HEIGHT_PADRAO_TELA = 600;
     private static Preferences preferencias;
     private static Stage stage;
 
@@ -53,7 +51,7 @@ public abstract class AbstractControle {
 
     protected void atualizarPaginaAtual(AbstractVisao telaAtual) {
         stage.setTitle(telaAtual.getTituloPagina());
-        stage.setScene(new Scene(telaAtual.getGridPane(), WIDTH_PADRAO_TELA, HEIGHT_PADRAO_TELA));
+        stage.setScene(new Scene(telaAtual.getGridPane(), telaAtual.getWidthPadraoTela(), telaAtual.getHeightPadraoTela()));
         stage.show();
     }
     
