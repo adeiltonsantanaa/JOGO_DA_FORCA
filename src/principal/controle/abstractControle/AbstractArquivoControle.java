@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public abstract class AbstractArquivoControle extends AbstractControle {
 
     private static final String CAMINHO_ARQUIVO_PALAVRAS;
-    private static final Pattern REGEX_FACIL = Pattern.compile("\\b[a-zA-Z]{1,4}\\b");
+    private static final Pattern REGEX_FACIL = Pattern.compile("\\b[a-zA-Z]{1,10}\\b");
     private static final Pattern REGEX_MEDIO = Pattern.compile("\\b[a-zA-Z]{11,}\\b");
     private static final Pattern REGEX_DIFICIL = Pattern.compile("\\b\\p{L}{11,}\\b");
 
